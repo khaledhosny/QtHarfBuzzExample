@@ -1,5 +1,7 @@
 #include <QtGui>
-#include <hb-ft.h>
+#include <hb.h>
+#include <hb-ft.h>	// HarfBuzz/FreeType bridge
+#include <hb-glib.h>	// for Unicode character properties
 
 class  myWindow:public QWidget
 {

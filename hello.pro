@@ -7,7 +7,7 @@ TEMPLATE = app
 TARGET = hello
 DEPENDPATH += .
 INCLUDEPATH += .
-PKGCONFIG = harfbuzz freetype2
+PKGCONFIG = harfbuzz freetype2 glib-2.0
 
 # Input
 SOURCES += hello.cc
