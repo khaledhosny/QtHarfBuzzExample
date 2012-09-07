@@ -3,6 +3,10 @@
 #include <hb-ft.h>	// HarfBuzz/FreeType bridge
 #include <hb-glib.h>	// for Unicode character properties
 
+const char *fileName = "amiri-regular.ttf";
+const char *textString = "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِیمِ";
+int fontSize = 50;
+
 class  myWindow:public QWidget
 {
 public:
@@ -13,9 +17,6 @@ public:
     void paintEvent(QPaintEvent*) {
         QPainter painter(this);
 
-        const char *fileName = "amiri-regular.ttf";
-        const char *textString = "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِیمِ";
-        int fontSize = 50;
         qreal marginSize = 10.0;
         qreal fontScale = 64.0;
 
