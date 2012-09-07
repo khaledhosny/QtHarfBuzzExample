@@ -56,9 +56,9 @@ public:
         qreal x = 0.0, y = 0.0;
         for (int i = 0; i < nGlyphs; i++, hbGlyphs++, hbPositions++) {
             glyphIndexes[i] = hbGlyphs->codepoint;
-            glyphPositions[i] = QPointF(x + hbPositions->x_offset/fontScale, y - hbPositions->y_offset/fontScale);
-            x += hbPositions->x_advance/fontScale;
-            y -= hbPositions->y_advance/fontScale;
+            glyphPositions[i] = QPointF(x + hbPositions->x_offset, y - hbPositions->y_offset) / fontScale;
+            x += hbPositions->x_advance;
+            y -= hbPositions->y_advance;
         }
 
         // prepare Qt glyph run and raw font to draw the glyphs
@@ -73,7 +73,7 @@ public:
         painter.drawGlyphRun(QPointF(marginSize, rawFont.ascent() + marginSize), glyphRun);
 
         // fit the window to the drawn glyphs
-        resize(x + marginSize*2, rawFont.ascent() + rawFont.descent() + marginSize*2);
+        resize(x/fontScale + marginSize*2, rawFont.ascent() + rawFont.descent() + marginSize*2);
 
         hb_buffer_destroy(hbBuffer);
         hb_font_destroy(hbFont);
