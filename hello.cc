@@ -57,6 +57,7 @@ public:
             glyphIndexes[i] = hbGlyphs->codepoint;
             glyphPositions[i] = QPointF(x + hbPositions->x_offset/64.0, y - hbPositions->y_offset/64.0);
             x += hbPositions->x_advance/64.0;
+            y -= hbPositions->y_advance/64.0;
         }
 
         // prepare Qt glyph run and raw font to draw the glyphs
