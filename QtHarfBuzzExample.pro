@@ -4,10 +4,10 @@
 
 CONFIG += link_pkgconfig
 TEMPLATE = app
-TARGET = hello
+TARGET = QtHarfBuzzExample
 DEPENDPATH += .
 INCLUDEPATH += .
 PKGCONFIG = harfbuzz freetype2 glib-2.0
 
 # Input
-SOURCES += hello.cc
+SOURCES += QtHarfBuzzExample.cc
