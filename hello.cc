@@ -15,8 +15,9 @@ public:
 
         const char *fileName = "amiri-regular.ttf";
         const char *textString = "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِیمِ";
-        int pixelSize = 50;
+        int fontSize = 50;
         qreal marginSize = 10.0;
+        qreal fontScale = 64.0;
 
         // prepare FreeType font
         FT_Library ftLibrary;
@@ -24,7 +25,7 @@ public:
 
         FT_Face ftFace;
         FT_New_Face(ftLibrary, fileName, 0, &ftFace);
-        FT_Set_Pixel_Sizes(ftFace, 0, pixelSize);
+        FT_Set_Pixel_Sizes(ftFace, 0, fontSize);
 
         // prepare HarfBuzz font and buffer
         hb_font_t *hbFont = hb_ft_font_create(ftFace, NULL);
@@ -55,13 +56,13 @@ public:
         qreal x = 0.0, y = 0.0;
         for (int i = 0; i < nGlyphs; i++, hbGlyphs++, hbPositions++) {
             glyphIndexes[i] = hbGlyphs->codepoint;
-            glyphPositions[i] = QPointF(x + hbPositions->x_offset/64.0, y - hbPositions->y_offset/64.0);
-            x += hbPositions->x_advance/64.0;
-            y -= hbPositions->y_advance/64.0;
+            glyphPositions[i] = QPointF(x + hbPositions->x_offset/fontScale, y - hbPositions->y_offset/fontScale);
+            x += hbPositions->x_advance/fontScale;
+            y -= hbPositions->y_advance/fontScale;
         }
 
         // prepare Qt glyph run and raw font to draw the glyphs
-        QRawFont rawFont = QRawFont(QString(fileName), pixelSize);
+        QRawFont rawFont = QRawFont(QString(fileName), fontSize);
         QGlyphRun glyphRun = QGlyphRun();
 
         glyphRun.setRawFont(rawFont);
