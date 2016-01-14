@@ -1,4 +1,6 @@
 #include <QtGui>
+#include <QtWidgets>
+
 #include <hb.h>
 #include <hb-ft.h>	// HarfBuzz/FreeType bridge
 #include <hb-glib.h>	// for Unicode character properties
